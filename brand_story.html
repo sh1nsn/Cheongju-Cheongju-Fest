@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Story - Cheongju's Cheongju Festival</title>
+    
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'wyy1tin',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+
+    <style>
+        /* --- 기본 설정 --- */
+        :root {
+            --bg-color: #99C4C1; 
+            --text-color: #FFFFFF;
+            --accent-color: #1D4D4F; 
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --dark-glass: rgba(0, 0, 0, 0.15);
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; min-height: 100%;
+            background: linear-gradient(180deg, #99C4C1 0%, #4D8581 100%);
+            background-attachment: fixed;
+            color: var(--text-color);
+            font-family: "moolong-chocolate-semimelt", 'Pretendard', sans-serif;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        
+        /* --- 네비게이션 --- */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            padding: 20px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(153,196,193,0.9), transparent);
+        }
+
+        .page-title { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; }
+
+        .btn-back {
+            display: inline-block; padding: 8px 20px;
+            border: 1px solid white; border-radius: 30px;
+            font-size: 0.8rem; font-weight: bold; text-transform: uppercase;
+            transition: all 0.3s ease; cursor: pointer;
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+        }
+
+        .btn-back:hover {
+            background: white; color: #4D8581; transform: translateX(-5px);
+        }
+
+        /* --- [수정됨] 히어로 섹션 --- */
+        .story-hero {
+            height: 50vh; /* 높이 약간 증가 */
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; padding-top: 80px;
+        }
+
+        /* Brand Story - 작게 */
+        .story-eyebrow {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-color); /* 강조색 사용 */
+            margin-bottom: 10px;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        /* 슬로건 - 크게 */
+        .story-headline {
+            font-size: 4.5rem; /* 크기 대폭 증가 */
+            font-weight: 300; /* 얇은 폰트로 세련되게 */
+            margin: 0;
+            line-height: 1.1;
+            font-family: "moolong-chocolate-semimelt", sans-serif; /* 감성적인 폰트 적용 */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* --- Brand Summary Section --- */
+        .summary-section {
+            padding: 50px 5vw;
+            max-width: 1200px; margin: 0 auto;
+        }
+
+        .summary-grid {
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px;
+        }
+
+        .summary-card {
+            background: var(--dark-glass);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            display: flex; flex-direction: column; justify-content: flex-start;
+        }
+
+        .summary-card.full-width { grid-column: span 2; text-align: center; }
+
+        .summary-label {
+            color: var(--accent-color); 
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px;
+        }
+
+        .summary-card h3 {
+            font-size: 1.4rem;
+            margin: 0 0 15px 0; 
+            line-height: 1.3;
+        }
+
+        .en-sub {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-top: 5px;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        .summary-card p {
+            font-size: 0.95rem;
+            opacity: 0.9; 
+            font-family: 'Pretendard', sans-serif; 
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .en-desc {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        /* --- 상세 콘텐츠 --- */
+        .content-section {
+            padding: 50px 5vw 0;
+            max-width: 1000px; margin: 0 auto;
+        }
+
+        .flex-box {
+            display: flex; gap: 40px; align-items: center; margin-bottom: 80px;
+        }
+        .flex-box.reverse { flex-direction: row-reverse; }
+        .text-box { flex: 1; }
+        .text-box h2 { font-size: 2rem; margin-bottom: 20px; line-height: 1.2; }
+        .text-box p { font-size: 1rem; opacity: 0.9; margin-bottom: 20px; font-family: 'Pretendard', sans-serif; }
+
+        .img-box {
+            flex: 1; height: 350px;
+            background: var(--glass-bg); border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid rgba(255,255,255,0.3); overflow: hidden;
+        }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- Brand Identity Section --- */
+        .identity-section {
+            padding: 50px 5vw 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .identity-title {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 60px;
+        }
+
+        .slogan-box {
+            margin-bottom: 80px;
+        }
+        .slogan-main {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+            font-family: 'Pretendard', sans-serif;
+            letter-spacing: -1px;
+        }
+        .slogan-sub {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            font-family: "moolong-chocolate-semimelt", sans-serif;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .logo-card {
+            background: var(--dark-glass);
+            border-radius: 20px;
+            padding: 30px 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, background 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-frame {
+            width: 100%;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .logo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+
+        .logo-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+            font-weight: 900;
+        }
+
+        .logo-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-family: 'Pretendard', sans-serif;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+
+        @media (max-width: 768px) {
+            /* [수정됨] 모바일 폰트 크기 조정 */
+            .story-headline { font-size: 2.8rem; }
+            .story-eyebrow { font-size: 0.9rem; }
+            
+            .summary-grid { grid-template-columns: 1fr; } 
+            .summary-card.full-width { grid-column: span 1; }
+            .flex-box, .flex-box.reverse { flex-direction: column; }
+            .img-box { width: 100%; height: 250px; }
+            nav { padding: 20px; }
+            .logo-grid { grid-template-columns: 1fr; }
+            .slogan-main { font-size: 1.8rem; }
+        }
+        
+        footer {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 60px 20px;
+            text-align: center;
+            font-family: 'Pretendard', sans-serif;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ffffff;
+            font-weight: 300;
+        }
+
+        .footer-content { max-width: 900px; margin: 0 auto; }
+        .copyright { font-size: 0.85rem; font-weight: 400; margin-bottom: 20px; opacity: 0.9; }
+        .info-text, .creator-text { font-size: 0.8rem; opacity: 0.7; line-height: 1.5; margin-bottom: 5px; }
+        .creator-text { margin-bottom: 20px; color: var(--text-color); opacity: 0.9; }
+        .ai-tools { font-size: 0.7rem; opacity: 0.5; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); display: inline-block; font-weight: 300; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="page-title">Brand Story</div>
+        <a href="index.html" class="btn-back">← Back to Main</a>
+    </nav>
+
+    <header class="story-hero">
+        <p class="story-eyebrow">Brand Story</p>
+        <h1 class="story-headline">Cheongju, drink the city!</h1>
+    </header>
+
+    <section class="summary-section">
+        <div class="summary-grid">
+            
+            <div class="summary-card">
+                <span class="summary-label">01. Background</span>
+                <h3>동음이의어 '청주'의 발견<br><span class="en-sub">Discovery of the Homonym 'Cheongju'</span></h3>
+                <p>
+                    도시 '청주(City)'와 전통주 '청주(Wine)'는 표기와 발음이 완벽히 동일합니다. 우리는 이 우연에서 강력한 브랜딩 기회를 발견했습니다.
+                    <span class="en-desc">
+                        The city 'Cheongju' and the traditional wine 'Cheongju' share the exact same spelling and pronunciation. We found a powerful branding opportunity in this coincidence.
+                    </span>
+                </p>
+            </div>
+
+            <div class="summary-card">
+                <span class="summary-label">02. Problem</span>
+                <h3>지루한 축제와 올드한 이미지<br><span class="en-sub">Boring Festivals & Old-fashioned Image</span></h3>
+                <p>
+                    기존 축제는 특산물 판매 위주였고, 전통주는 '옛것'으로 인식되었습니다. 우리는 이 두 문제를 해결할 '재미있는 연결고리'가 필요했습니다.
+                    <span class="en-desc">
+                        Existing festivals were sales-focused, and traditional wine was seen as outdated. We needed a 'fun link' to solve both problems simultaneously.
+                    </span>
+                </p>
+            </div>
+
+            <div class="summary-card full-width">
+                <span class="summary-label">03. Core Concept</span>
+                <h3>"도시를 마시다"<br><span class="en-sub">"Drink the City"</span></h3>
+                <p>
+                    언어유희(Pun)를 활용한 위트있는 브랜딩으로, 술을 마시는 행위를 넘어 도시의 문화와 매력을 함께 들이킨다는 중의적 의미를 담았습니다.
+                    <span class="en-desc">
+                        Using witty wordplay, we branded the act of drinking not just as consuming alcohol, but as imbibing the culture and charm of the city itself.
+                    </span>
+                </p>
+            </div>
+
+            <div class="summary-card">
+                <span class="summary-label">04. Target Audience</span>
+                <h3>MZ세대 & 트렌드 세터<br><span class="en-sub">MZ Generation & Trendsetters</span></h3>
+                <p>
+                    밈(Meme)과 언어유희를 즐기고, 새로운 경험을 찾아다니며 이를 SNS에 적극적으로 공유하는 2030 세대입니다.
+                    <span class="en-desc">
+                        Our target is the 2030 generation who enjoy memes and wordplay, seek new experiences, and actively share them on social media.
+                    </span>
+                </p>
+            </div>
+
+            <div class="summary-card">
+                <span class="summary-label">05. Vision</span>
+                <h3>로컬 브랜딩의 새로운 패러다임<br><span class="en-sub">New Paradigm of Local Branding</span></h3>
+                <p>
+                    일회성 행사가 아닌, 지역과 제품이 상생하며 지속 가능한 가치를 만드는 대한민국 대표 로컬 브랜딩 사례가 될 것입니다.
+                    <span class="en-desc">
+                        Beyond a one-time event, it will become a leading example of local branding where the region and product coexist to create sustainable value.
+                    </span>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="flex-box">
+            <div class="text-box">
+                <h2>청주(淸州)에서<br>청주(淸酒)를 즐기다</h2>
+                <p>
+                    '맑은 도시' 청주(Cheongju City)와 '맑은 술' 청주(Cheongju Traditional Liquor).
+                    우리는 발음은 같지만 뜻은 다른 두 개의 '청주'가 만나는 지점에 주목했습니다.
+                </p>
+            </div>
+            <div class="img-box">
+                <img src="files/goods2.png" alt="청주 병 이미지">
+            </div>
+        </div>
+
+        <div class="flex-box reverse">
+            <div class="text-box">
+                <h2>Why We Started</h2>
+                <p>
+                    단순한 지역 특산물 홍보는 이제 지루하지 않나요?
+                    우리는 뻔한 축제 대신, 젊은 세대가 공감할 수 있는 
+                    재미있는 콘텐츠와 그들이 사랑하는 '술'을 결합했습니다.
+                </p>
+            </div>
+            <div class="img-box">
+                <img src="files/goods1.png" alt="브랜드 이미지">
+            </div>
+        </div>
+    </section>
+
+    <section class="identity-section">
+        <h2 class="identity-title">Brand Identity</h2>
+        
+        <div class="slogan-box">
+            <div class="slogan-main">"Cheongju: Drink the City"</div>
+            <div class="slogan-sub">청주의 맛과 멋을 감각적으로 표현한 슬로건</div>
+        </div>
+
+        <div class="logo-grid">
+            <div class="logo-card">
+                <div class="logo-frame">
+                    <img src="files/logo1.png" alt="Symbol Mark">
+                </div>
+                <div class="logo-info">
+                    <h3>Symbol Mark</h3>
+                    <p>손을 잡고 머리를 흔드는 사람의 형상으로<br>주류와 함께하는 즐거운 분위기를 표현했습니다.</p>
+                </div>
+            </div>
+
+            <div class="logo-card">
+                <div class="logo-frame">
+                    <img src="files/logo2.png" alt="Logotype">
+                </div>
+                <div class="logo-info">
+                    <h3>Logotype</h3>
+                    <p>곡선을 활용한 디자인으로<br>청주청주축제의 자유로운 정체성을 담았습니다.</p>
+                </div>
+            </div>
+
+            <div class="logo-card">
+                <div class="logo-frame">
+                    <img src="files/logo3.png" alt="Signature">
+                </div>
+                <div class="logo-info">
+                    <h3>Signature</h3>
+                    <p>청주청주축제의 초성과 심볼의 조화로운 결합.<br>공식 포스터 및 굿즈에 사용됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="text-align: center; margin-bottom: 50px;">
+        <a href="index.html" class="btn-back" style="padding: 10px 30px; font-size: 0.9rem;">Back to Main</a>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p class="copyright">© 2025 Cheongju's Cheongju Festival. All Rights Reserved.</p>
+            
+            <div class="info-text">
+                Sogang University, Art & Technology 2025-2 Semester Ai-driven Storytelling (Prof. Sunok Lee)
+            </div>
+            
+            <div class="creator-text">
+                Created by Seoyun Shin
+            </div>
+
+            <div class="ai-tools">
+                This project was created using Midjourney, ChatGPT, and Gemini.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

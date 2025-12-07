@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive - Cheongju's Cheongju Festival</title>
+
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'wyy1tin',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+
+    <style>
+        /* --- 공통 변수 --- */
+        :root {
+            --bg-color: #99C4C1;
+            --text-color: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; min-height: 100%;
+            background: linear-gradient(180deg, #99C4C1 0%, #4D8581 100%);
+            background-attachment: fixed;
+            color: var(--text-color);
+            scroll-behavior: smooth;
+            font-family: "moolong-chocolate-semimelt", 'Pretendard', sans-serif;
+            font-weight: 700;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- [수정됨] Brand Story와 동일한 네비게이션 스타일 --- */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            padding: 20px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(153,196,193,0.9), transparent);
+        }
+
+        .page-title { 
+            font-weight: 900; 
+            font-size: 1.2rem; 
+            text-transform: uppercase; 
+        }
+
+        .btn-back {
+            display: inline-block; padding: 8px 20px;
+            border: 1px solid white; border-radius: 30px;
+            font-size: 0.8rem; font-weight: bold; text-transform: uppercase;
+            transition: all 0.3s ease; cursor: pointer;
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+            /* 기존 Archive의 flex/gap 스타일 제거하고 Story 스타일로 통일 */
+        }
+
+        .btn-back:hover {
+            background: white; color: #4D8581; transform: translateX(-5px);
+        }
+
+        /* --- 갤러리 그리드 --- */
+        .archive-container {
+            /* nav가 fixed이므로 상단 여백 추가 (기존 padding-top: 50px -> 120px) */
+            padding: 120px 5vw 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-card {
+            aspect-ratio: 3 / 4;
+            background-color: #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            animation: slideUp 0.8s ease forwards;
+            cursor: pointer;
+        }
+
+        .photo-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-info {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center;
+            opacity: 0; transition: opacity 0.3s;
+            padding: 20px;
+        }
+
+        .photo-card:hover .photo-info { opacity: 1; }
+        .photo-card:hover img { transform: scale(1.1); }
+
+        .photo-info h3 { 
+            margin: 0 0 10px; font-size: 1.8rem; 
+            font-family: "moolong-chocolate-semimelt", sans-serif;
+        }
+        .photo-info p { 
+            margin: 0; font-size: 1rem; opacity: 0.9; 
+            font-weight: 400; font-family: 'Pretendard', sans-serif;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .photo-card:nth-child(4n+1) { animation-delay: 0.1s; }
+        .photo-card:nth-child(4n+2) { animation-delay: 0.2s; }
+        .photo-card:nth-child(4n+3) { animation-delay: 0.3s; }
+        .photo-card:nth-child(4n+4) { animation-delay: 0.4s; }
+
+
+        /* --- Footer 스타일 --- */
+        footer {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 60px 20px;
+            text-align: center;
+            font-family: 'Pretendard', sans-serif;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ffffff;
+            font-weight: 300;
+        }
+
+        .footer-content { max-width: 900px; margin: 0 auto; }
+        .copyright { font-size: 0.85rem; font-weight: 400; margin-bottom: 20px; opacity: 0.9; }
+        .info-text, .creator-text { font-size: 0.8rem; opacity: 0.7; line-height: 1.5; margin-bottom: 5px; }
+        .creator-text { margin-bottom: 20px; color: var(--text-color); opacity: 0.9; }
+        .ai-tools { font-size: 0.7rem; opacity: 0.5; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); display: inline-block; font-weight: 300; }
+
+        @media (max-width: 768px) {
+            .archive-container {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 100px 20px 80px; /* 모바일에서도 상단 여백 확보 */
+                gap: 10px;
+            }
+            nav { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="page-title">Archives</div>
+        <a href="index.html" class="btn-back">← Back to Main</a>
+    </nav>
+
+    <div class="archive-container">
+        <div class="photo-card">
+            <img src="archive_img/1.png" alt="archive">
+            <div class="photo-info"><h3>People Saying Cheers</h3><p>짠 하는 사람들</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/2.png" alt="archive">
+            <div class="photo-info"><h3>Filling Cheongju Completely</h3><p>청주를 가득 메우다</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/3.png" alt="archive">
+            <div class="photo-info"><h3>Cheers with me!</h3><p>저랑 짠 해주세요</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/4.png" alt="archive">
+            <div class="photo-info"><h3>Cheongju's smile</h3><p>청주의 미소</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/5.png" alt="archive">
+            <div class="photo-info"><h3>Fermentation ASMR!</h3><p>발효 ASMR 체험 중!</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/6.png" alt="archive">
+            <div class="photo-info"><h3>Glug-Glug-Glug!</h3><p>콸콸콸</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/7.png" alt="archive">
+            <div class="photo-info"><h3>A Jar ready to serve</h3><p>대기중인 항아리</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/8.png" alt="archive">
+            <div class="photo-info"><h3>Make Your Perfume</h3><p>청주 향수 만들기</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/9.png" alt="archive">
+            <div class="photo-info"><h3>Make Your Perfume</h3><p>청주 향수 만들기</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/10.png" alt="archive">
+            <div class="photo-info"><h3>Make Your Perfume</h3><p>청주 향수 만들기</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/11.png" alt="archive">
+            <div class="photo-info"><h3>Pop-pop sounds</h3><p>톡톡 소리가 들려요</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/12.png" alt="archive">
+            <div class="photo-info"><h3>Lifetime together</h3><p>이거마시고백년해로</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/13.png" alt="archive">
+            <div class="photo-info"><h3>Feeling Clear</h3><p>청주 마시니 기분도 맑음</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/14.png" alt="archive">
+            <div class="photo-info"><h3>Cheongju vs Takju</h3><p>청주와 탁주 토론 중</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/15.png" alt="archive">
+            <div class="photo-info"><h3>Oops!</h3><p>청주 마시다 취해서 넘어짐</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/16.png" alt="archive">
+            <div class="photo-info"><h3>Have a drink!</h3><p>한잔하시죠!</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/17.png" alt="archive">
+            <div class="photo-info"><h3>Cheers</h3><p>짠</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/18.png" alt="archive">
+            <div class="photo-info"><h3>Make Your Perfume</h3><p>청주 향수 만들기</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/19.png" alt="archive">
+            <div class="photo-info"><h3>Cheongju's Sunlight</h3><p>청주의 햇빛을 받으며</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/20.png" alt="archive">
+            <div class="photo-info"><h3>Vote for Cheongju!</h3><p>청주에 투표하세요!</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/21.png" alt="archive">
+            <div class="photo-info"><h3>Truth Booth</h3><p>사실은 말야..</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/22.png" alt="archive">
+            <div class="photo-info"><h3>Feel the excitement!</h3><p>아이 신나!</p></div>
+        </div>
+        <div class="photo-card">
+            <img src="archive_img/23.png" alt="archive">
+            <div class="photo-info"><h3>Staff</h3><p>시음을 준비하고 있어요</p></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p class="copyright">© 2025 Cheongju's Cheongju Festival. All Rights Reserved.</p>
+            
+            <div class="info-text">
+                Sogang University, Art & Technology 2025-2 Semester Ai-driven Storytelling (Prof. Sunok Lee)
+            </div>
+            
+            <div class="creator-text">
+                Created by Seoyun Shin
+            </div>
+
+            <div class="ai-tools">
+                This project was created using Midjourney, ChatGPT, and Gemini.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
